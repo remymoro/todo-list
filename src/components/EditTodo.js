@@ -33,8 +33,8 @@ export default function EditTodo({ todo, editTodo, cancelEditTodo }) {
         className="mr-15 flex-fill"
         placeholder="Ajouter une tâche"
       />
-      <Button onClick={handleClick} className=" mr-15" text="Annuler"/>
       <Button onClick={cancelEditTodo} className="mr-15" text="Annuler"/>
+      <Button onClick={handleClick} className=" mr-15" text="valider"/>
     </div>
         
      
