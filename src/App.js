@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
-
+import themeContext from "./context/theme";
 
 
 
@@ -43,13 +43,28 @@ function App() {
    todoList.map((todo)=> todo.id === id ? {...todo,selected: !todo.selected  } : {...todo,selected: false}))
  }
 
+ const [theme , setTheme] = useState('primary');
+
+ function handleChange(e){
+   
+  setTheme(e.target.value)
+
+ }
 
 
 
   return (
+    <themeContext.Provider value={theme} >
    <div className="d-flex justify-content-center align-items-center p-20">
      <div className="card container mb-20">
-     <h1 className="mb-20">Liste des taches</h1>
+     <h1 className="mb-20 d-flex flex-row justify-content-center align-items-center">
+       <span className="flex-fill"> Liste des taches</span>
+             <select value={theme} onChange={handleChange}>
+              <option value="primary">Rouge</option>
+              <option value="secondary">Bleu</option>
+              </select>
+      </h1>
+
      <AddTodo addTodo={addTodo} />
      <TodoList 
      toggleTodoEdit={toggleTodoEdit} 
@@ -61,7 +76,7 @@ function App() {
      />
       </div>
    </div>
-
+   </themeContext.Provider>
 
   );
 }

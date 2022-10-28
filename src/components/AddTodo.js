@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 
 
@@ -33,7 +34,7 @@ export default function AddTodo({addTodo}) {
   return (
     <div className="d-flex justify-content-center align-items-center">
      <input type='text' onChange={handleChange} onKeyDown={handleKeyDown} value={value} className="flex-fill" placeholder="Ajouter une tache"/>
-    <button onClick={handleClick} className="btn btn-primary">Ajouter</button>
+     <Button text="ajouter" onClick={handleClick} />
     </div>
 
 

@@ -1,3 +1,7 @@
+import Button from "./Button";
+
+
+
 export default function TodoItem({todo,deleteTodo,editTodo,toggleTodo,selectedTodo}) {
     
    return (
@@ -7,11 +11,10 @@ export default function TodoItem({todo,deleteTodo,editTodo,toggleTodo,selectedTo
      ${todo.selected ? 'selected' : '' }`} >
 
 
-
      <span onClick={selectedTodo} className="flex-fill">{todo.content} {todo.done && '✅'}</span>
-     <button className="btn btn-primary m-15" onClick={(e)=>{e.stopPropagation();toggleTodo()}}>Valider</button>
-     <button className="btn btn-primary m-15" onClick={(e)=>{e.stopPropagation();editTodo()}}>Modifier</button>
-     <button className="btn btn-primary m-15" onClick={(e)=>{e.stopPropagation();deleteTodo()}}>Supprimer</button>
+     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();toggleTodo()}} text="valider"/>
+     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();editTodo()}} text="modifier"/>
+     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();deleteTodo()}}text="supprimer"/>
      </li>
       
 
