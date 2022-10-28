@@ -7,8 +7,7 @@ import todoReducer from "./reducers/todoReducer";
 
 
 function App() {
-    // le use reducer prends une fonction en paramètre  et un e état initial cette fonction est la seule à changer l"état du reducer 
-  //  on recupere l'état du reducer qui retoure un tableau est l'état que l'on va stocker stocker dans le reducer 
+    
     const [state , dispatch] = useReducer(todoReducer,{
       theme:'primary',
       todoList:[],
@@ -16,12 +15,10 @@ function App() {
   
 
   function addTodo(content) {
-    // dispotch est la façon don on va pouvoir invoquer le reducer avec une action qui est unbjet avec un clef type  on donne le nom de l'action exemple "ADD_TODO"
    dispatch({
     // convention pour nommée majuscule
     type:'ADD_TODO',
     content,
-    // on lui passe ensuite toute les actions donc on va avoir besoin pour réaliseer cette  action 
    })
   }
 
@@ -34,7 +31,6 @@ function App() {
     })
   }
 
-  // a partir du moment ou une action est dispactché automatiquement notre todoReducer est invoque on arrive dans le switch (suite dans todoReducer.js)
 
   function toggleTodo(id){
     dispatch({
