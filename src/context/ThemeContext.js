@@ -4,8 +4,8 @@ const { createContext } = require("react");
 
 // création du context 
 
-const themeContext = createContext('secondary')
+const ThemeContext = createContext('primary');
 
 
 
-export default themeContext;
+export default ThemeContext;

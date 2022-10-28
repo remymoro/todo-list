@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
-import { todoDispatcherContext } from "../context/todoContext";
+import { useState } from "react";
+import { useTodoDispatcher } from "../context/TodoContext";
+
 import Button from "./Button";
 
 
@@ -10,7 +11,7 @@ import Button from "./Button";
 
 export default function AddTodo() {
     const [value, setValue] = useState('')
-    const dispatch = useContext(todoDispatcherContext)
+    const dispatch = useTodoDispatcher();
  
    function handleChange(e){
     const inputValue = e.target.value;

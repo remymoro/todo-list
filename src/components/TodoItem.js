@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { todoDispatcherContext } from "../context/todoContext";
+import { TodoDispatcherContext } from "../context/TodoContext";
 import { useContext } from "react";
 
 
@@ -9,7 +9,7 @@ import { useContext } from "react";
 
 
 export default function TodoItem({todo}) {
-  const dispatch = useContext(todoDispatcherContext)
+  const dispatch = useContext(TodoDispatcherContext)
     
    return (
    

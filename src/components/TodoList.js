@@ -1,14 +1,14 @@
 import TodoItem from "./TodoItem";
 import EditTodo from './EditTodo';
 import { useContext } from "react";
-import { todoStateContext } from "../context/todoContext";
+import { TodoStateContext } from "../context/TodoContext";
 
 
 // todoList={state.todoList}
 
 export default function TodoList(){
  
-  const state = useContext(todoStateContext)
+  const state = useContext(TodoStateContext)
 
 
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import themeContext from "../context/theme";
+import ThemeContext from "../context/ThemeContext";
 
 
 
@@ -7,7 +7,7 @@ function Button({text,className,...props}){
 
 // utilisation du context 
 
-     const theme = useContext(themeContext);
+     const theme = useContext(ThemeContext);
 
     return <button {...props} className={`btn btn-${theme} ${className ? className :  '' }`}>{text}</button>
 }
