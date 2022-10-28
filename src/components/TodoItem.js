@@ -1,8 +1,15 @@
 import Button from "./Button";
+import { todoDispatcherContext } from "../context/todoContext";
+import { useContext } from "react";
 
 
 
-export default function TodoItem({todo,deleteTodo,editTodo,toggleTodo,selectedTodo}) {
+
+
+
+
+export default function TodoItem({todo}) {
+  const dispatch = useContext(todoDispatcherContext)
     
    return (
    
@@ -11,10 +18,10 @@ export default function TodoItem({todo,deleteTodo,editTodo,toggleTodo,selectedTo
      ${todo.selected ? 'selected' : '' }`} >
 
 
-     <span onClick={selectedTodo} className="flex-fill">{todo.content} {todo.done && '✅'}</span>
-     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();toggleTodo()}} text="valider"/>
-     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();editTodo()}} text="modifier"/>
-     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();deleteTodo()}}text="supprimer"/>
+     <span onClick={()=> dispatch({type:"SELECTED_TODO",id:todo.id})} className="flex-fill">{todo.content} {todo.done && '✅'}</span>
+     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();dispatch({type:"TOGGLE_TODO",id:todo.id})}} text="Valider"/>
+     <Button className=" m-15" onClick={(e)=>{e.stopPropagation();dispatch({type:"TOGGLE_EDIT_TODO",id :todo.id})}} text="Modifier"/>
+     <Button className=" m-15" onClick={(e)=>{e.stopPropagation(); dispatch({type:"DELETE_TODO",id:todo.id})}}text="Supprimer"/>
      </li>
       
 

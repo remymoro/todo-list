@@ -2,6 +2,8 @@ import { useReducer } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import themeContext from "./context/theme";
+import { todoStateContext } from "./context/todoContext";
+import { todoDispatcherContext } from "./context/todoContext";
 import todoReducer from "./reducers/todoReducer";
 
 
@@ -14,53 +16,13 @@ function App() {
     })
   
 
-  function addTodo(content) {
-   dispatch({
-    // convention pour nommée majuscule
-    type:'ADD_TODO',
-    content,
-   })
-  }
+  
+
+
+  
 
 
 
-  function deleteTodo(id){
-    dispatch({
-      type:"DELETE_TODO",
-      id,
-    })
-  }
-
-
-  function toggleTodo(id){
-    dispatch({
-      type:"TOGGLE_TODO",
-      id,
-    })
-  }
-
-
-  function toggleTodoEdit(id){
-    dispatch({
-      type:"TOGGLE_EDIT_TODO",
-      id,
-    })  
-  }
-
- function editTodo(id, content){
-   dispatch({
-    type:"EDIT_TODO",
-    id,
-    content
-   })
- }
-
- function selectedTodo(id){
-    dispatch({
-      type:"SELECTED_TODO",
-      id
-    })
- }
 
 
  function handleChange(e){
@@ -74,6 +36,9 @@ function App() {
 
 
   return (
+    <todoStateContext.Provider value={state}>
+    <todoDispatcherContext.Provider value={dispatch}>
+
     <themeContext.Provider value={state.theme} >
    <div className="d-flex justify-content-center align-items-center p-20">
      <div className="card container mb-20">
@@ -85,18 +50,18 @@ function App() {
               </select>
       </h1>
 
-     <AddTodo addTodo={addTodo} />
-     <TodoList 
-     toggleTodoEdit={toggleTodoEdit} 
-     deleteTodo={deleteTodo} 
-     todoList={state.todoList}
-     toggleTodo={toggleTodo}
-     editTodo={editTodo}
-     selectedTodo={selectedTodo}
-     />
+     <AddTodo  />
+     <TodoList />
       </div>
    </div>
    </themeContext.Provider>
+
+
+  
+    </todoDispatcherContext.Provider>
+
+    </todoStateContext.Provider>
+   
 
   );
 }
